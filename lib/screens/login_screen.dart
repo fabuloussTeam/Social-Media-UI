@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_social_ui/widgets/cuve_clipper.dart';
+import 'package:flutter_social_ui/screens/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
 
@@ -26,7 +27,6 @@ class _LoginScreenState extends State<LoginScreen> {
                    fit: BoxFit.cover,
                  ),
                ),
-
                new Text(
                  'FRENZY',
                  style: TextStyle(
@@ -70,8 +70,14 @@ class _LoginScreenState extends State<LoginScreen> {
                  ),
                ),
                new SizedBox(height: 40.0),
-               new GestureDetector(
-                 onTap: (){},
+               new GestureDetector( //le navigator.push
+                 // simple a la fleche de retour ver la page precedente
+                 onTap: () => Navigator.pushReplacement(
+                     context,
+                     MaterialPageRoute(
+                       builder:  (_) => HomeScreen()
+                     )
+                 ),
                  child:  new Container(
                    margin: EdgeInsets.symmetric(horizontal: 60.0),
                    height: 45.0,
