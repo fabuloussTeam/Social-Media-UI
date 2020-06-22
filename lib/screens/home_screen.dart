@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_social_ui/data/data.dart';
+import 'package:flutter_social_ui/models/post_model.dart';
 import 'package:flutter_social_ui/widgets/following_users.dart';
+import 'package:flutter_social_ui/widgets/posts_carousel.dart';
 
 class HomeScreen extends StatefulWidget {
 
@@ -15,12 +18,16 @@ class _HomeScreenState extends State<HomeScreen>
   // Ajout du singleTickerProviderStateMixin et _tabController
   // Pour la gestion des onglets plus bas.
   TabController _tabController;
+  PageController _pageController;// pour les carrousels
+
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
+    _pageController = PageController(initialPage: 0, viewportFraction: 0.8);
+
   }
 
 
@@ -64,6 +71,11 @@ class _HomeScreenState extends State<HomeScreen>
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               FollowingUsers(),
+              PostsCarousel(
+                pageController: _pageController,
+                title: 'Posts',
+                posts: posts
+              )
             ],
           )
         ],
